@@ -38,7 +38,7 @@
             </div><!-- end hero-copy -->
 
             <div class="hero-image">
-                <img src="img/mac.png" alt="hero image">
+                <img src="https://images-na.ssl-images-amazon.com/images/I/81inkGnge8L._AC_SL1500_.jpg" alt="hero image">
             </div><!--end hero-image -->
         </div><!-- end hero -->
     </header>
@@ -56,7 +56,7 @@
             <div class="products text-center">
                 @foreach($products as $product)
                     <div class="product">
-                        <a href="#"><img src="/img/mac.png" alt="product"></a>
+                        <a href="#"><img src="https://cdn.mos.cms.futurecdn.net/ibsU7dpc5pJ2Su8ZTbPNRV-1200-80.jpg.webp" ></a>
                         <a href="#"><div class="product-name">{{$product-> name}}</div></a>
                         <div class = "product-price">{{$product->price}}</div>
                     </div>
