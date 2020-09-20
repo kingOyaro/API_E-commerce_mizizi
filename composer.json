@@ -9,8 +9,15 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "algolia/algoliasearch-client-php": "^2.7",
+        "braintree/braintree_php": "^5.3",
+        "cartalyst/stripe-laravel": "11.0",
         "fideloper/proxy": "^4.0",
-        "laravel/framework": "^6.18.35",
+        "hardevine/shoppingcart": "^2.9",
+        "laravel/dusk": "^6.6",
+        "laravel/framework": "^v6.18.40",
+        "laravel/helpers": "^1.3",
+        "laravel/scout": "^8.3",
         "laravel/tinker": "^2.0"
     },
     "require-dev": {
