@@ -12,4 +12,5 @@
 */
 
 Route::get('/', 'landingPageController@index')->name('landing-page');
+Route::get('/shop', 'ShopController@index')->name('shop');
 
