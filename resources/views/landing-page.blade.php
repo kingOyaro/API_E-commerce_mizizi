@@ -57,8 +57,8 @@
             <div class="products text-center">
                 @foreach($products as $product)
                     <div class="product">
-                        <a href="#"><img src="https://cdn.mos.cms.futurecdn.net/ibsU7dpc5pJ2Su8ZTbPNRV-1200-80.jpg.webp" alt="Product Image" ></a>
-                        <a href="#"><div class="product-name">{{$product-> name}}</div></a>
+                        <a href="{{route('shop.show',$product->slug)}}"><img src="{{asset('img/products/'.$product->slug.'.jpg')}}" alt="Product Image" ></a>
+                        <a href="{{route('shop.show',$product->slug)}}"><div class="product-name">{{$product-> name}}</div></a>
                         <div class = "product-price">{{$product->price}}</div>
                     </div>
                 @endforeach
@@ -66,7 +66,7 @@
             </div><!-- end products -->
 
             <div class="text-center button-container">
-                <a href="#" class="button">View more products</a>
+                <a href="{{route('shop.index')}}" class="button">View more products</a>
             </div>
 
         </div><!-- end container -->
