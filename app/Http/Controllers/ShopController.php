@@ -22,7 +22,7 @@ class ShopController extends Controller
     public function show($slug)
     {
         $product = Product::where('slug',$slug)->firstOrfail();
-        $mightAlsoLike = Product::where('slug', '!=', $slug)->mightAlsoLike()->get();
+        $mightAlsoLike = Product::where('slug', '!=', $slug)->inRandomOrder()->take(12)->get();
 
         return view('product')->with([
             'product' => $product,

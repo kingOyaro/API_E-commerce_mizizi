@@ -12,5 +12,5 @@ npm-debug.log
 yarn-error.log
 /public/css
 /public/js
-/composer.lock
+composer.lock
 .idea
