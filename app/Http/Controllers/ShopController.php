@@ -19,4 +19,11 @@ class ShopController extends Controller
         return view('shop')->with('products', $products);
     }
 
+    public function show($slug)
+    {
+        $product = Product::where('slug',$slug)->firstOrfail();
+
+        return view('product')->with('product',$product);
+    }
+
 }
