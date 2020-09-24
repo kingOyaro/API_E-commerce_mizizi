@@ -10,7 +10,7 @@
 
     <div class="breadcrumbs">
         <div class="container">
-            <a href="#">Home</a>
+            <a href="/">Home</a>
             <i class="fa fa-chevron-right breadcrumb-separator"></i>
             <span>Shop</span>
         </div>
@@ -45,7 +45,7 @@
                     <div class="product">
                         <a href="{{route('shop.show',$product->slug)}}"><img src="{{asset('img/products/'.$product->slug.'.jpg')}}" alt="Product Image" ></a>
                         <a href="{{route('shop.show',$product->slug)}}"><div class="product-name">{{$product-> name}}</div></a>
-                        <div class = "product-price">{{$product->price}}</div>
+                        <div class = "product-price">{{$product->presentPrice()}}</div>
                     </div>
                 @endforeach
             </div><!-- end products -->
