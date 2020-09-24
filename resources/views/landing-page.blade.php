@@ -30,10 +30,10 @@
         <div class="hero container">
             <div class="hero-copy">
                 <h1>Welcome</h1>
-                <p>Includes multiple products, categories, a shopping cart and a checkout system with Stripe integration</p>
+                <p>Your one stop shop for everything tech. The project Includes multiple products, categories, a shopping cart and a checkout system with Stripe as well as Paypal  integration</p>
                 <div class="hero-buttons">
+                    <a href="#" class="button button-white">Shop now</a>
                     <a href="#" class="button button-white">Blog Post</a>
-                    <a href="#" class="button button-white">Github</a>
                 </div>
             </div><!-- end hero-copy -->
 
@@ -95,6 +95,18 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div><!-- end blog-section -->
+    <footer>
+        <div class="footer-content container">
+            <div class="made-with">Made with <i class="fa fa-heart"></i> by Vikendi_Noobs</div>
+            <ul>
+                <li>Follow Us:</li>
+                <li><a href="#"><i class="fa fa-globe"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+            </ul>
+        </div><!-- end footer-content-->
+    </footer>
 </body>
 </html>
