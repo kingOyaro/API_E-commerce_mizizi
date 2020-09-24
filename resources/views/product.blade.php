@@ -19,7 +19,7 @@
 
     <div class="product-section container">
         <div class="product-section-image">
-            <img src="{{asset('img/products/'.$product->slug.'.jpg')}}"alt="product">
+            <img src="{{asset('img/products/'.$product->slug.'.jpg')}}" alt="product Image">
         </div>
         <div class="product-section-information">
             <h1 class="product-section-title">{{$product->name}}</h1>
