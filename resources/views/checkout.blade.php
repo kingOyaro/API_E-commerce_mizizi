@@ -188,6 +188,9 @@
             form.addEventListener('submit', function(event) {
                 event.preventDefault();
 
+                //Disable submit after clicked once
+                document.getElementById('complete-order').disable = true;
+
                 var options = {
                     name: document.getElementById('name_on_card').value,
                     address_line1: document.getElementById('address').value,
@@ -201,6 +204,10 @@
                         // Inform the user if there was an error.
                         var errorElement = document.getElementById('card-errors');
                         errorElement.textContent = result.error.message;
+
+                        //Disable submit after clicked once
+                        document.getElementById('complete-order').disable = false;
+
                     } else {
                         // Send the token to your server.
                         stripeTokenHandler(result.token);

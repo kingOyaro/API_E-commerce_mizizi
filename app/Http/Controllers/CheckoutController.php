@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
+use Cartalyst\Stripe\Exception\CardErrorException;
 use Cartalyst\Stripe\Stripe;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
@@ -32,11 +34,19 @@ class CheckoutController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         //dd($request->all());
+        if ($this->productsAreNoLongerAvailable()) {
+            return back()->withErrors('Sorry! One of the items in your cart is no longer available.');
+        }
+
+        $contents = Cart::content()->map(function ($item) {
+            return $item->model->slug.', '.$item->qty;
+        })->values()->toJson();
+
 
         try {
             $stripe = new Stripe();
@@ -53,11 +63,11 @@ class CheckoutController extends Controller
                 ],
             ]);
 
-
+            Cart::instance('default')->destroy();
             //SUCCESSFUL
             return redirect()->route('confirmation.index')->with('success_message', 'Thank you! Your payment has been successfully accepted!');
-        } catch (\Exception $e) {
-            //return back()->withErrors('Error! '. $e->getMessage());
+        } catch (CardErrorException $e) {
+            return back()->withErrors('Error! '. $e->getMessage());
         }
     }
 
@@ -104,5 +114,17 @@ class CheckoutController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    protected function productsAreNoLongerAvailable()
+    {
+        foreach (Cart::content() as $item) {
+            $product = Product::find($item->model->id);
+            if ($product->quantity < $item->qty) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

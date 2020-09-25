@@ -22,7 +22,6 @@
             <div class="logo">Mizizi</div>
             <ul>
                 <li><a href="/shop">Shop</a></li>
-                <li><a href="#">About</a></li>
                 <li><a href="#">Blog</a></li>
                 <li>
                     <a href="{{route('cart.index')}}">Cart<span class="cart-count">
@@ -38,7 +37,7 @@
                 <h1>Welcome</h1>
                 <p>Your one stop shop for everything tech. The project Includes multiple products, categories, a shopping cart and a checkout system with Stripe as well as Paypal  integration</p>
                 <div class="hero-buttons">
-                    <a href="{{route('shop.index')}}" class="button button-white">Shop now</a>
+                    <a href="#" class="button button-white">Shop now</a>
                     <a href="#" class="button button-white">Blog Post</a>
                 </div>
             </div><!-- end hero-copy -->
