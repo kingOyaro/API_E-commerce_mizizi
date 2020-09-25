@@ -40,7 +40,7 @@
                     @foreach (Cart::content() as $item)
                         <div class="cart-table-row">
                             <div class="cart-table-row-left">
-                                <a href="{{ route('shop.show', $item->model->slug) }}"><img src="{{ productImage($item->model->image) }}" alt="item" class="cart-table-img"></a>
+                                <a href="{{ route('shop.show', $item->model->slug) }}"><img src="{{ asset('img/products/'.$item->model->slug.'.jpg') }}" alt="item" class="cart-table-img"></a>
                                 <div class="cart-item-details">
                                     <div class="cart-table-item"><a href="{{ route('shop.show', $item->model->slug) }}">{{ $item->model->name }}</a></div>
                                     <div class="cart-table-description">{{ $item->model->details }}</div>
@@ -75,49 +75,23 @@
 
                 </div> <!-- end cart-table -->
 
-                @if (! session()->has('coupon'))
-
-                    <a href="#" class="have-code">Have a Code?</a>
-
-                    <div class="have-code-container">
-                        <form action="{{ route('coupon.store') }}" method="POST">
-                            {{ csrf_field() }}
-                            <input type="text" name="coupon_code" id="coupon_code">
-                            <button type="submit" class="button button-plain">Apply</button>
-                        </form>
-                    </div> <!-- end have-code-container -->
-                @endif
 
                 <div class="cart-totals">
                     <div class="cart-totals-left">
-                        Shipping is free because we’re awesome like that. Also because that’s additional stuff I don’t feel like figuring out :).
+                        Shipping is free because we’re awesome like that. Feel free to look around for items that might interest you
                     </div>
 
                     <div class="cart-totals-right">
                         <div>
                             Subtotal <br>
-                            @if (session()->has('coupon'))
-                                Code ({{ session()->get('coupon')['name'] }})
-                                <form action="{{ route('coupon.destroy') }}" method="POST" style="display:block">
-                                    {{ csrf_field() }}
-                                    {{ method_field('delete') }}
-                                    <button type="submit" style="font-size:14px;">Remove</button>
-                                </form>
-                                <hr>
-                                New Subtotal <br>
-                            @endif
-                            Tax ({{config('cart.tax')}}%)<br>
+                            Tax (16%)<br>
                             <span class="cart-totals-total">Total</span>
                         </div>
                         <div class="cart-totals-subtotal">
                             {{ presentPrice(Cart::subtotal()) }} <br>
-                            @if (session()->has('coupon'))
-                                -{{ presentPrice($discount) }} <br>&nbsp;<br>
+                            {{ presentPrice(Cart::tax()) }} <br>&nbsp;<br>
                                 <hr>
-                                {{ presentPrice($newSubtotal) }} <br>
-                            @endif
-                            {{ presentPrice($newTax) }} <br>
-                            <span class="cart-totals-total">{{ presentPrice($newTotal) }}</span>
+                            <span class="cart-totals-total">{{ presentPrice(Cart::total()) }}</span>
                         </div>
                     </div>
                 </div> <!-- end cart-totals -->
