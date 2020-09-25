@@ -20,7 +20,7 @@
     <div class="product-section container">
         <div class="product-section-image">
             <a href="{{ route('shop.show', $product->slug) }}" class="product Image">
-                <img src="{{asset('img/products/'.$product->slug.'.jpg')}}" alt="product">
+                <img src="{{asset('/img/products/'.$product->slug.'.jpg')}}" alt="product">
             </a>
         </div>
         <div class="product-section-information">
