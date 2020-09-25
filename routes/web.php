@@ -29,12 +29,14 @@ Route::get('empty', function(){
    Cart::instance('saveForLater')->destroy();
 });
 
+Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
+Route::post('/checkout', 'CheckoutController@store')->name('checkout.store');
+
+
+Route::get('/thankyou', 'ConfirmationController@index')->name('confirmation.index');
+
+
 Route::get('/search', 'ShopController@search')->name('search');
 
 Route::get('/search-algolia', 'ShopController@searchAlgolia')->name('search-algolia');
 
-Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
-Route::post('/checkout', 'CheckoutController@store')->name('checkout.store');
-
-//Route::view('/checkout', 'checkout');
-Route::view('/thankyou', 'thankyou');

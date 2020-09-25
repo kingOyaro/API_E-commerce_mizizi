@@ -100,7 +100,7 @@
                     @foreach (Cart::content() as $item)
                         <div class="checkout-table-row">
                             <div class="checkout-table-row-left">
-                                <a href="{{ route('shop.show', $item->model->slug) }}"><img src="{{ asset('img/products/'.$item->model->slug.'.jpg') }}" alt="item" class="checkout-table-img"></a>
+                                <img src="{{ asset('img/products/'.$item->model->slug.'.jpg') }}" alt="item" class="checkout-table-img"></a>
                                 <div class="checkout-item-details">
                                     <div class="checkout-table-item">{{ $item->model->name }}</div>
                                     <div class="checkout-table-description">{{ $item->model->details }}</div>
@@ -123,9 +123,9 @@
                     </div>
 
                     <div class="checkout-totals-right">
-                            {{--presentPrice(Cart::subtotal())--}}<br>
-                            {{--presentPrice(Cart::total())--}}<br>
-                            <span class="checkout-totals-total">{{--presentPrice(Cart::total())--}}</span>
+                            {{presentPrice(Cart::subtotal())}}<br>
+                            {{presentPrice(Cart::tax())}}<br>
+                            <span class="checkout-totals-total">{{presentPrice(Cart::total())}}</span>
                     </div>
                 </div><!--end checkout-totals -->
 
@@ -151,7 +151,7 @@
             var style = {
                 base: {
                     color: '#32325d',
-                    fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                    fontFamily: '"Roboto", "Helvetica Neue", Helvetica, sans-serif',
                     fontSmoothing: 'antialiased',
                     fontSize: '16px',
                     '::placeholder': {
@@ -165,7 +165,10 @@
             };
 
             // Create an instance of the card Element.
-            var card = elements.create('card', {style: style});
+            var card = elements.create('card', {
+                style: style,
+                hidePostalCode: true
+            });
 
             // Add an instance of the card Element into the `card-element` <div>.
             card.mount('#card-element');

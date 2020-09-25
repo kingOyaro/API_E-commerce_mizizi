@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Cartalyst\Stripe\Stripe;
-use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 
-class CheckoutController extends Controller
+class ConfirmationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +13,11 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        return view('checkout');
+        if (! session()->has('success_message')) {
+            return redirect('/');
+        }
+
+        return view('thankyou');
     }
 
     /**
@@ -36,29 +38,7 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
-
-        try {
-            $stripe = new Stripe();
-            $charge=$stripe->charges()->create([
-                'amount' => Cart::total()/100,
-                'currency' =>'USD',
-                'source' => $request->stripeToken,
-                'description' =>'Order',
-                'receipt_email' => $request->email,
-                'metadata' =>[
-                    //'contents'=> $contents,
-                    //'quantity'=>Cart::instance('default')->count(),
-
-                ],
-            ]);
-
-
-            //SUCCESSFUL
-            return redirect()->route('confirmation.index')->with('success_message', 'Thank you! Your payment has been successfully accepted!');
-        } catch (\Exception $e) {
-            //return back()->withErrors('Error! '. $e->getMessage());
-        }
+        //
     }
 
     /**
@@ -69,7 +49,7 @@ class CheckoutController extends Controller
      */
     public function show($id)
     {
-
+        //
     }
 
     /**
