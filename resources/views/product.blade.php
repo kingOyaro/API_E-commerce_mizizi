@@ -43,7 +43,6 @@
             </div>
     </div> <!-- end product-section -->
 
-
     @include('partials.might-like')
 
 
